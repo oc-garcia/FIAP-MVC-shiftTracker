@@ -3,24 +3,14 @@ var router = express.Router();
 var userController = require("../controllers/userController.js");
 
 router.get("/", userController.getAll);
+router.get("/new", userController.new);
 router.get("/:id", userController.getById);
+router.get("/:id/edit", userController.edit);
 
-// CREATE
-router.post("/", (req, res, next) => {
-  // Insert user into the database
-  // res.send('User created');
-});
+router.post("/", userController.create);
 
-// PATCH user by ID
-router.patch("/:id", (req, res, next) => {
-  // Update user with req.params.id in the database
-  // res.send('User updated');
-});
+router.patch("/:id", userController.update);
 
-// DELETE
-router.delete("/:id", (req, res, next) => {
-  // Delete user with req.params.id from the database
-  // res.send('User deleted');
-});
+router.delete("/:id", userController.delete);
 
 module.exports = router;

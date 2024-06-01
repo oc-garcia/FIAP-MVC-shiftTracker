@@ -1,21 +1,69 @@
 var User = require("../models/user.js");
 
-exports.getAll = function (req, res) {
-  User.getAll((err, user) => {
+exports.getAll = (req, res) => {
+  User.getAll((err, users) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.send(user);
+      console.log(users);
+      res.render("user", { title: "Users", users: users });
     }
   });
 };
 
-exports.getById = function (req, res) {
+exports.getById = (req, res) => {
   User.getById(req.params.id, (err, user) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.send(user);
+      res.render("detail", { title: "User Detail", user: user });
+    }
+  });
+};
+
+exports.create = (req, res) => {
+  var { name, email } = req.body;
+  var newUser = { name: name, email: email };
+  User.create(newUser, (err) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.redirect("/user");
+    }
+  });
+};
+
+exports.new = (req, res) => {
+  res.render("form", { title: "Create User", user: {}, url: "/user" });
+};
+
+exports.edit = (req, res) => {
+  User.getById(req.params.id, (err, user) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.render("form", { title: "Edit User", user: user, url: `/user/${user.id}?_method=PATCH` });
+    }
+  });
+};
+
+exports.update = (req, res) => {
+  var updatedUser = { name: req.body.name, email: req.body.email };
+  User.update(req.params.id, updatedUser, (err) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.redirect("/user");
+    }
+  });
+};
+
+exports.delete = (req, res) => {
+  User.delete(req.params.id, (err) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.redirect("/user");
     }
   });
 };
