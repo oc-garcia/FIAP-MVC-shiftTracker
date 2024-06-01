@@ -1,11 +1,12 @@
 extends layout
 
 block content
-    h1.mb-4 #{user.name}
+    h1.mb-4 User Detail
     .card
         .card-body
             h5.card-title #{user.name}
             p.card-text #{user.email}
-    a.btn.btn-primary(href=`/user/${user.id}/edit`) Edit
-    form(method='post', action=`/user/${user.id}?_method=DELETE`)
-        input.btn.btn-danger(type='submit', value='Delete')
+    div.d-flex.mt-2
+        a.btn.btn-primary.mr-2(href=`/user/${user.id}/edit`) Edit
+        form(method='post', action=`/user/${user.id}?_method=DELETE`)
+            input.btn.btn-danger(type='submit', value='Delete')

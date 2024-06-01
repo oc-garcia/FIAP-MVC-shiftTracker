@@ -14,9 +14,9 @@ block content
                     td #{user.name}
                     td #{user.email}
                     td
-                        a.btn.btn-primary(href=`/user/${user.id}`) View
-                        a.btn.btn-secondary(href=`/user/${user.id}/edit`) Edit
-                        form(method='post', action=`/user/${user.id}?_method=DELETE`)
-                            input.btn.btn-danger(type='submit', value='Delete')
+                        div.d-flex
+                            a.btn.btn-primary.mr-2(href=`/user/${user.id}`) View
+                            a.btn.btn-secondary.mr-2(href=`/user/${user.id}/edit`) Edit
+                            form(method='post', action=`/user/${user.id}?_method=DELETE`)
+                                input.btn.btn-danger(type='submit', value='Delete')
     a.btn.btn-success(href='/user/new') Create New User
-    
