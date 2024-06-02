@@ -1,10 +1,8 @@
 var Shift = require("../models/shift.js");
-var User = require("../models/user.js");
 var checkUserExists = require("../middleware/checkUserExists.js");
 
 exports.getAll = (req, res) => {
   Shift.getAll((err, shifts) => {
-    console.log(shifts);
     if (err) {
       res.status(500).send(err.message);
     } else {
@@ -18,7 +16,6 @@ exports.getById = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      console.log(shift);
       res.render("shift/shift", { shift: shift });
     }
   });
@@ -44,7 +41,7 @@ exports.create = [
       if (err) {
         res.status(500).send(err.message);
       } else {
-        res.status(201).json(result);
+        res.redirect("/shift");
       }
     });
   },
@@ -60,7 +57,7 @@ exports.update = [
       if (err) {
         res.status(500).send(err.message);
       } else {
-        res.status(200).json(result);
+        res.redirect("/shift");
       }
     });
   },
@@ -71,7 +68,23 @@ exports.delete = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.status(200).json(result);
+      res.redirect("/shift");
+    }
+  });
+};
+
+exports.createForm = (req, res) => {
+  res.render("shift/form", { title: "Create Shift", url: "/shift", shift: {} });
+};
+
+exports.editForm = (req, res) => {
+  console.log(req.params.id);
+  Shift.getById(req.params.id, (err, shift) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      console.log(shift);
+      res.render("shift/form", { title: "Edit Shift", url: `/shift/${shift.id}?_method=PATCH`, shift: shift });
     }
   });
 };

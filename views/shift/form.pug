@@ -5,11 +5,11 @@ block content
     form(method='post', action=url)
         .form-group
             label(for='userId') User ID
-            input#userId.form-control(type='text', name='userId', value=shift.userId, required)
+            input#userId.form-control(type='text', name='userId', value=shift.user_id, required)
         .form-group
             label(for='startTime') Start Time
-            input#startTime.form-control(type='text', name='startTime', value=shift.startTime, required)
+            input#startTime.form-control(type='datetime-local', name='startTime', value=shift.start_time, required)
         .form-group
             label(for='endTime') End Time
-            input#endTime.form-control(type='text', name='endTime', value=shift.endTime, required)
+            input#endTime.form-control(type='datetime-local', name='endTime', value=shift.end_time, required)
         input.btn.btn-primary(type='submit', value='Save')

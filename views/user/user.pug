@@ -5,12 +5,14 @@ block content
     table.table
         thead.thead-dark
             tr
+                th ID
                 th Name
                 th Email
                 th Actions
         tbody
             each user in users
                 tr
+                    td #{user.id}
                     td #{user.name}
                     td #{user.email}
                     td

@@ -5,7 +5,6 @@ exports.getAll = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      console.log(users);
       res.render("user/user", { title: "Users", users: users });
     }
   });

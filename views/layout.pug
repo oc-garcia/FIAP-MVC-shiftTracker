@@ -3,5 +3,11 @@ html
   head
     title= title
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
-  body.container.py-5
+  body.container
+    nav.m-0
+      ul.nav
+        li.nav-item
+          a.nav-link.pl-0(href='/shift') Shift Admin
+        li.nav-item
+          a.nav-link.pl-0(href='/user') User Admin
     block content

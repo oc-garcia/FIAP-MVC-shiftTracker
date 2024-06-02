@@ -15,11 +15,12 @@ block content
                 tr
                     td #{shift.id}
                     td #{shift.user_id}
-                    td #{shift.start_time}
-                    td #{shift.end_time}
+                    td #{new Date(shift.start_time).toLocaleString()}
+                    td #{new Date(shift.end_time).toLocaleString()}
                     td
                         div.d-flex
                             a.btn.btn-primary.mr-2(href=`/shift/${shift.id}`) View
+                            a.btn.btn-secondary.mr-2(href=`/shift/edit/${shift.id}`) Edit
                             form(method='POST' action=`/shift/${shift.id}?_method=DELETE`)
                                 input.btn.btn-danger(type='submit', value='Delete')
-    a.btn.btn-success(href='/user/new') Create New Shift
+    a.btn.btn-success(href='/shift/new') Create New Shift
