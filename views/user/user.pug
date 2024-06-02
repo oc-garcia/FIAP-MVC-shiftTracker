@@ -16,7 +16,8 @@ block content
                     td
                         div.d-flex
                             a.btn.btn-primary.mr-2(href=`/user/${user.id}`) View
+                            a.btn.btn-info.mr-2(href=`/shift/user/${user.id}`) User Shifts
                             a.btn.btn-secondary.mr-2(href=`/user/${user.id}/edit`) Edit
-                            form(method='post', action=`/user/${user.id}?_method=DELETE`)
+                            form(method='POST', action=`/user/${user.id}?_method=DELETE`)
                                 input.btn.btn-danger(type='submit', value='Delete')
     a.btn.btn-success(href='/user/new') Create New User

@@ -4,6 +4,7 @@ var checkUserExists = require("../middleware/checkUserExists.js");
 
 exports.getAll = (req, res) => {
   Shift.getAll((err, shifts) => {
+    console.log(shifts);
     if (err) {
       res.status(500).send(err.message);
     } else {
@@ -17,6 +18,7 @@ exports.getById = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
+      console.log(shift);
       res.render("shift/shift", { shift: shift });
     }
   });
@@ -27,7 +29,7 @@ exports.getByUserId = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.render("shift/shiftByUser", { shifts: shifts });
+      res.render("shift/shiftByUser", { ...shifts });
     }
   });
 };

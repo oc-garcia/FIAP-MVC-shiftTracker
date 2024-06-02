@@ -3,8 +3,9 @@ extends ../layout
 block content
     h1 All Shifts
     table.table
-        thead
+        thead.thead-dark
             tr
+                th ID
                 th User ID
                 th Start Time
                 th End Time
@@ -12,9 +13,13 @@ block content
         tbody
             each shift in shifts
                 tr
-                    td #{shift.userId}
-                    td #{shift.startTime}
-                    td #{shift.endTime}
+                    td #{shift.id}
+                    td #{shift.user_id}
+                    td #{shift.start_time}
+                    td #{shift.end_time}
                     td
-                        a.btn.btn-primary(href=`/shifts/${shift.id}`) View
-                        a.btn.btn-danger(href=`/shifts/delete/${shift.id}`) Delete
+                        div.d-flex
+                            a.btn.btn-primary.mr-2(href=`/shift/${shift.id}`) View
+                            form(method='POST' action=`/shift/${shift.id}?_method=DELETE`)
+                                input.btn.btn-danger(type='submit', value='Delete')
+    a.btn.btn-success(href='/user/new') Create New Shift

@@ -2,9 +2,10 @@ extends ../layout
 
 block content
     h1 Shift Details
-    p User ID: #{shift.userId}
-    p Start Time: #{shift.startTime}
-    p End Time: #{shift.endTime}
-    a.btn.btn-primary(href=`/shifts/edit/${shift.id}`) Edit
-    form(action=`/shifts/delete/${shift.id}`, method='POST')
-        button.btn.btn-danger(type='submit') Delete
+    p User ID: #{shift.user_id}
+    p Start Time: #{shift.start_time}
+    p End Time: #{shift.end_time}
+    div.d-flex
+        a.btn.btn-primary.mr-2(href=`/shifts/edit/${shift.id}`) Edit
+        form(method='POST' action=`/shift/${shift.id}?_method=DELETE`)
+            input.btn.btn-danger(type='submit', value='Delete')
