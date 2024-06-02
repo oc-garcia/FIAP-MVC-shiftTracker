@@ -88,3 +88,13 @@ exports.editForm = (req, res) => {
     }
   });
 };
+
+exports.shiftByUser = (req, res) => {
+  Shift.getByUserId(req.params.userId, (err, shifts) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.render("shift/shiftByUser", { shifts: shifts });
+    }
+  });
+};

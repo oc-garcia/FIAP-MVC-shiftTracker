@@ -12,9 +12,11 @@ block content
         tbody
             each shift in shifts
                 tr
-                    td #{shift.userId}
-                    td #{shift.startTime}
-                    td #{shift.endTime}
+                    td #{shift.id}
+                    td #{new Date(shift.start_time).toLocaleString()}
+                    td #{new Date(shift.end_time).toLocaleString()}
                     td
-                        a.btn.btn-primary(href=`/shifts/${shift.id}`) View
-                        a.btn.btn-danger(href=`/shifts/delete/${shift.id}`) Delete
+                        div.d-flex
+                            a.btn.btn-primary.mr-2(href=`/shift/${shift.id}`) View
+                            form(method='POST', action=`/shift/${shift.id}?_method=DELETE`)
+                                input.btn.btn-danger(type='submit', value='Delete')
