@@ -6,7 +6,7 @@ router.get('/', shiftController.getAll);
 router.get('/:id', shiftController.getById);
 router.get('/user/:userId', shiftController.getByUserId);
 router.post('/', shiftController.create);
-router.put('/:id', shiftController.update);
+router.patch('/:id', shiftController.update);
 router.delete('/:id', shiftController.delete);
 
 module.exports = router;
