@@ -7,7 +7,7 @@ exports.getAll = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.status(200).json(shifts);
+      res.render("shift/allShift", { shifts: shifts });
     }
   });
 };
@@ -17,7 +17,7 @@ exports.getById = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.status(200).json(shift);
+      res.render("shift/shift", { shift: shift });
     }
   });
 };
@@ -27,7 +27,7 @@ exports.getByUserId = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.status(200).json(shifts);
+      res.render("shift/shiftByUser", { shifts: shifts });
     }
   });
 };

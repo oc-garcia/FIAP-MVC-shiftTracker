@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    h1.mb-4 #{title}
+    form(method='post', action=url)
+        .form-group
+            label(for='userId') User ID
+            input#userId.form-control(type='text', name='userId', value=shift.userId, required)
+        .form-group
+            label(for='startTime') Start Time
+            input#startTime.form-control(type='text', name='startTime', value=shift.startTime, required)
+        .form-group
+            label(for='endTime') End Time
+            input#endTime.form-control(type='text', name='endTime', value=shift.endTime, required)
+        input.btn.btn-primary(type='submit', value='Save')

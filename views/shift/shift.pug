@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+    h1 Shift Details
+    p User ID: #{shift.userId}
+    p Start Time: #{shift.startTime}
+    p End Time: #{shift.endTime}
+    a.btn.btn-primary(href=`/shifts/edit/${shift.id}`) Edit
+    form(action=`/shifts/delete/${shift.id}`, method='POST')
+        button.btn.btn-danger(type='submit') Delete
