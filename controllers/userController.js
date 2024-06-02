@@ -6,7 +6,7 @@ exports.getAll = (req, res) => {
       res.status(500).send(err.message);
     } else {
       console.log(users);
-      res.render("user", { title: "Users", users: users });
+      res.render("user/user", { title: "Users", users: users });
     }
   });
 };
@@ -16,7 +16,7 @@ exports.getById = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.render("detail", { title: "User Detail", user: user });
+      res.render("user/detail", { title: "User Detail", user: user });
     }
   });
 };
@@ -34,7 +34,7 @@ exports.create = (req, res) => {
 };
 
 exports.new = (req, res) => {
-  res.render("form", { title: "Create User", user: {}, url: "/user" });
+  res.render("user/form", { title: "Create User", user: {}, url: "/user" });
 };
 
 exports.edit = (req, res) => {
@@ -42,7 +42,7 @@ exports.edit = (req, res) => {
     if (err) {
       res.status(500).send(err.message);
     } else {
-      res.render("form", { title: "Edit User", user: user, url: `/user/${user.id}?_method=PATCH` });
+      res.render("user/form", { title: "Edit User", user: user, url: `/user/${user.id}?_method=PATCH` });
     }
   });
 };
