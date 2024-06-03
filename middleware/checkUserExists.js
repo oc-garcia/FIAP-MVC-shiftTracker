@@ -1,7 +1,8 @@
 var User = require("../models/user.js");
 
 function checkUserExists(req, res, next) {
-  User.getById(req.body.userId, (err, user) => {
+  const userId = Number(req.body.userId);
+  User.getById(userId, (err, user) => {
     if (err) {
       console.error(err.message);
       res.status(500).send("An error occurred");
