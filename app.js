@@ -7,8 +7,9 @@ const methodOverride = require("method-override");
 const port = process.env.PORT || 3001;
 
 var indexRouter = require("./routes/index");
-var userRouter = require("./routes/user");
-var shiftRouter = require("./routes/shift");
+var userRenderRouter = require("./routes/userRender");
+var shiftRenderRouter = require("./routes/shiftRender");
+var userApiRoutes = require("./routes/userApi");
 
 var app = express();
 
@@ -24,8 +25,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 
 app.use("/", indexRouter);
-app.use("/user", userRouter);
-app.use("/shift", shiftRouter);
+app.use("/user", userRenderRouter);
+app.use("/shift", shiftRenderRouter);
+app.use("/api/user", userApiRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
