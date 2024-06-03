@@ -4,12 +4,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const methodOverride = require("method-override");
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 var indexRouter = require("./routes/index");
 var userRenderRouter = require("./routes/userRender");
 var shiftRenderRouter = require("./routes/shiftRender");
-var userApiRoutes = require("./routes/userApi");
+var userApiRouter = require("./routes/userApi");
+var shiftApiRouter = require("./routes/shiftApi");
 
 var app = express();
 
@@ -27,7 +28,8 @@ app.use(methodOverride("_method"));
 app.use("/", indexRouter);
 app.use("/user", userRenderRouter);
 app.use("/shift", shiftRenderRouter);
-app.use("/api/user", userApiRoutes);
+app.use("/api/user", userApiRouter);
+app.use("/api/shift", shiftApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
