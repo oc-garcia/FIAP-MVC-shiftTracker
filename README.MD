@@ -6,7 +6,7 @@ This is a Shift Management System built with Node.js, Express, and Pug, focusing
 
 ## Deployment
 
-The application is deployed on Render and can be accessed at [https://fiap-mvc-shifttracker.onrender.com](https://fiap-mvc-shifttracker.onrender.com).
+The application is deployed on Render and can be accessed at [https://fiap-mvc-shifttracker.onrender.com](https://fiap-mvc-shifttracker.onrender.com). (Free tier, first load will take some time)
 
 ## API Documentation
 
